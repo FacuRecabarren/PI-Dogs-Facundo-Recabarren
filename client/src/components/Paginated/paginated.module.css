@@ -1,0 +1,39 @@
+nav {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .pageNumber {
+    list-style: none;
+    margin: 0 5px;
+  }
+  
+  .pageNumber a {
+    color: #000;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+  }
+  
+  .pageNumber a:hover {
+    background-color: #ddd;
+  }
+  
+  .pageNumber.active a {
+    background-color: #4CAF50;
+    color: #fff;
+  }
+  
+  .pageNumber.disabled a {
+    opacity: 0.5;
+    pointer-events: none;
+  }
