@@ -1,18 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from '../DogCard/dogCard.module.css'
+import style from '../DogCard/dogCard.module.css'
 
 const DogCard = ({ id, image, name, temperament, weightMin, weightMax, averageWeight }) => {
     return (
-        <div className={styles.dogCard}>
+        
+        
+        <div className={style.dogCard}>
+            
+            <div className={style.imgDiv}>
             <Link to={`/detail/${id}`}>
-                <img src={image} alt={name} height='200px' />
+                <img className={style.imgCard} src={image} alt={name} />
             </Link>
-            <h3>{name}</h3>
-            <h4>{temperament}</h4>
-            <h4>Min weight: {weightMin} - Max weight: {weightMax}</h4>
-            <h4>Average weight: {averageWeight}</h4>
+            </div>
+            <div className={style.divTitles}>
+                <span className={style.titleDog}>{name}</span>
+                <span className={style.subTitleDog}>{temperament}</span>
+            </div>
+
+            <div className={style.divData}>
+             
+                <h4 className={style.titleData}>Min weight<span className={style.subTitleData}>{weightMin}kg</span></h4>
+                <h4 className={style.titleData}>Max weight<span className={style.subTitleData}>{weightMax}kg</span></h4>
+                <h4 className={style.titleData}>Average weight<span className={style.subTitleDataAv}>{averageWeight}kg</span></h4>
+              
+            </div>
+            <Link to={`/detail/${id}`}>
+                <button className={style.btnCard}>Detail</button>
+            </Link>
+            
         </div>
+        
     )
 }
 

@@ -79,17 +79,18 @@ const FilterDogs = () => {
   //Dogs card as individual units-OK
 
   return (
-    <div>
+    
+    <div className={style.bodyFilterDogs}>
       <div className={style.filters}>
-        <div>Filter dogs' sourcing</div>
-        <select onChange={event => {handleFilterByOrigin(event)}}>
+        <div className={style.filterTitle}>Filter dogs' sourcing</div>
+        <select className={style.filterSelect} onChange={event => {handleFilterByOrigin(event)}}>
           <option value="All">All dogs</option>
           <option value="api">Api dogs</option>
           <option value="from_DB">My dogs</option>
         </select>
 
-        <div>Filter dogs by temperament</div>
-        <select value={temperament} onChange={event => {handleFilterByTemper(event)}}>
+        <div className={style.filterTitle}>Filter dogs by temperament</div>
+        <select className={style.filterSelect} defaultValue="temp" value={temperament} onChange={event => {handleFilterByTemper(event)}}>
           <option value="all">All Temperaments</option>
               {temperaments.map((temp) => {
                 return (
@@ -100,34 +101,35 @@ const FilterDogs = () => {
               })}
         </select> 
 
-        <div>Alphabetical Ordering</div>
-        <select defaultValue="name" onChange={event =>{handleOrder1(event)}}>
-          <option value="name" disabled selected></option>
-          <option value="a-z">from A to Z</option>
-          <option value="z-a">from Z to A</option>
+        <div className={style.filterTitle}>Alphabetical Ordering</div>
+        <select className={style.filterSelect} defaultValue="name" onChange={event =>{handleOrder1(event)}}>
+          <option value="name" disabled selected>Select</option>
+          <option value="a-z">A - Z</option>
+          <option value="z-a">Z - A</option>
         </select>
 
-        <div>Weight Ordering</div>
-        <select defaultValue="weight" onChange={event =>{handleOrder2(event)}}>
-          <option value="weight" disabled selected></option>
+        <div className={style.filterTitle}>Weight Ordering</div>
+        <select className={style.filterSelect} defaultValue="weight" onChange={event =>{handleOrder2(event)}}>
+          <option value="weight" disabled selected>Select</option>
           <option value="min">From lighter to heavier</option>
           <option value="max">From heavier to lighter</option>
         </select>
-        <div>Average weight</div>
-        <select defaultValue="aver" onChange={event =>{handleOrder2(event)}}>
-          <option value="aver" disabled selected></option>
+
+        <div className={style.filterTitle}>Average weight</div>
+        <select className={style.filterSelect} defaultValue="aver" onChange={event =>{handleOrder2(event)}}>
+          <option value="aver" disabled selected>Select</option>
           <option value="ave">Order from lighter to heavier</option>
           <option value="ave-max">Order from heavier to lighter</option>
         </select>
-      </div>
-
-
-        <Pagination
-        dogsPerPage= {dogsPerPage}
-        dogs= {dogs.length}
-        pagination= {pagination} />
-
+      </div> 
+      
+      <Pagination
+          dogsPerPage= {dogsPerPage}
+          dogs= {dogs.length}
+          pagination= {pagination} />
+      
       <div className={style.container}>
+      
       {
         currentDogs?.map(dog=> {
           return (
@@ -144,7 +146,9 @@ const FilterDogs = () => {
           )
         })
       }
+        
       </div>    
+      
     </div>
   )
 }

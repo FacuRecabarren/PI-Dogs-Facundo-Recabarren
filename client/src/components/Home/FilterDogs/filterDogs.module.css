@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500&display=swap');
+
+.bodyFilterDogs{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4em;
+}
+
+.filters{
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    align-items: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    height: 6em;
+    width: 100vw;
+    background-color: #e6bb00;
+    box-shadow: 0 0 1rem hsla(0, 0%, 0%, 0.3);
+    color: rgb(255, 255, 255);
+    flex-wrap: wrap;
+}
+
+.filterTitle{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+    letter-spacing: -.015em;
+    color: #000000;
+}
+
+.filterSelect{
+
+    font-family: 'IBM Plex Sans', sans-serif;
+    text-align: center;
+    cursor: pointer;
+    color: #000000;
+    font-size: 1em;
+    border: 0;
+    border-bottom: 1px solid #000000;
+    background-color: transparent;
+    font-weight: 300;
+    transition: .3s ease-in-out;
+    width: 6em;
+    outline: none;
+}
+
+
+option{
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1em;
+    font-weight: 300;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+}
+
+
+
+
+
+

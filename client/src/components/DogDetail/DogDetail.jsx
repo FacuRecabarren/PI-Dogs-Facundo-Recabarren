@@ -3,6 +3,8 @@ import { getDogDetail } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import style from "../DogDetail/dogDetail.module.css";
 
 const Detail = () => {
   let dispatch= useDispatch();
@@ -14,17 +16,39 @@ const Detail = () => {
   }, [])
 
   return (
-    
-    <div>
-      <h3>Id: {dogDetail?.id}</h3>
-      <h1>Breed: {dogDetail?.name}</h1>
-      <img src={dogDetail?.image ? dogDetail.image : "img"} alt="img" />
-      <h3>Weight:</h3>
-      <span>Min: {dogDetail?.weightMin}</span> - <span>Max: {dogDetail?.weightMax}</span>
-      <h3>Average weight: {dogDetail?.averageWeight}</h3> 
-      <h3>Height (min - max): {dogDetail?.height}</h3>
-      <h3>Life expectancy: {dogDetail?.life_span}</h3>    
-      <h3>Temperament: {dogDetail?.temperament}</h3>
+
+    <div className={style.parent}>
+      
+      <div className={style.div1}>
+
+        <div className={style.div2}>
+          <img className={style.img} src={dogDetail?.image ? dogDetail.image : "img"} alt="img" />
+          <div className={style.divTitles}>
+            <span className={style.title}>{dogDetail?.name}</span>
+            <span className={style.subtitle}>{dogDetail?.temperament}</span>
+          </div>
+          
+        </div>
+
+        <div className={style.div3}>
+            <h3 className={style.spanTitle}>Dog number: <span className={style.spanSubtitle}>{dogDetail?.id}</span></h3>
+            <hr />
+            <h3 className={style.spanTitle}>Weight: <span className={style.spanSubtitle}> {dogDetail?.weightMin} - </span><span className={style.spanSubtitle}>{dogDetail?.weightMax}</span></h3>
+            <hr />
+            <h3 className={style.spanTitle}>Average weight: <span className={style.spanSubtitle}>{dogDetail?.averageWeight}</span></h3> 
+            <hr />
+            <h3 className={style.spanTitle}>Height: <span className={style.spanSubtitle}>{dogDetail?.height}</span></h3>
+            <hr />
+            <h3 className={style.spanTitle}>Life expectancy: <span className={style.spanSubtitle}>{dogDetail?.life_span}</span></h3>
+            <hr /> 
+            <Link to="/home">
+              <button className={style.btnDetail}>Back Home</button>
+            </Link>
+        </div>
+     
+      </div>
+   
+
     </div>
 
   )

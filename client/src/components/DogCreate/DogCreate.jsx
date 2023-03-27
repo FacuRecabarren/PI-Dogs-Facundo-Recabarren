@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { createNewDog, getAllTemperaments } from "../../redux/actions";
+import { Link } from "react-router-dom";
 import validate from "./validate"
 import style from "../DogCreate/dogCreate.module.css"
 
@@ -196,6 +197,10 @@ const DogCreate = () => {
           onClick={()=>{handleDelete(temp)}}>X</button>
         </div>
         )}
+
+      <Link to="/home">
+        <button>Back Home</button>
+      </Link>
 
     </div>
   )

@@ -16,7 +16,9 @@ const Paginated = ({dogsPerPage, dogs, pagination}) => {
             pages && pages.map(num => (
                 <li className={style.pageNumber} key={num}>
 
-                    <a onClick={() => pagination(num)}>{num}</a>
+                    <button className={style.divLink}>
+                        <a className={style.link} onClick={() => pagination(num)}>{num}</a>
+                    </button>
 
                 </li>
             ))}

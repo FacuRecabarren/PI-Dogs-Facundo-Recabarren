@@ -17,11 +17,18 @@ const Home = () => {
 }    
   
   return (
-    <div>
-      <h1 className={style.title}>Dogs...Who can´t love them!</h1>
-      <Link to='/dog'>Create dog</Link>
-      <SearchBar />
-      <button className={style.refButton} onClick={(event)=> handleClick(event)}>Get all dogs back</button>
+    <div className={style.bodyHome}>
+      <div className={style.divNav}>
+        
+        <Link to='/dog'>
+          <button className={style.btnCreate}>Create Dog!</button>
+        </Link>
+        
+        <button className={style.btnCreate} onClick={(event)=> handleClick(event)}>Get all dogs back</button>
+        <SearchBar />
+      </div>
+      
+      
       <AllDogs/>
     </div>
   )

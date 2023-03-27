@@ -18,7 +18,7 @@ const getBreedsFromApi= async()=> {
             let averageWeight = weightMax + weightMin;
         
             if (weightMin && weightMax) {
-                averageWeight= averageWeight / 2;
+                averageWeight = averageWeight / 2;
 
             } else if (weightMin && !weightMax) {
                 weightMax = weightMin;
@@ -29,18 +29,11 @@ const getBreedsFromApi= async()=> {
                 averageWeight= averageWeight / 2;
 
             } else {
-                if (inst.name === "Smooth Fox Terrier") {
-                    weightMin = 6;
-                    weightMax = 9;
-                    averageWeight= ((weightMax) + (weightMin)) / 2;
-
-                } else {
-                    weightMin = 20;
-                    weightMax = 30;
-                    averageWeight= ((weightMax) + (weightMin)) / 2;
-
-                }
+                weightMin = 20;
+                weightMax = 30;
+                averageWeight= ((weightMax) + (weightMin)) / 2;
             }
+            
             // console.log(inst.weight.metric.length<=3&&inst.id)
 
         return {
@@ -74,7 +67,7 @@ const getBreedsFromDb= async()=> {
         id: inst.id,
         weightMax: inst.weightMax,
         weightMin: inst.weightMin,
-        averageWeight: (inst.weightMax + inst.weightMin)/2,
+        averageWeight: (inst.weightMax + inst.weightMin) / 2,
         height: inst.height,
         name: inst.name,
         life_span: inst.life_span,
@@ -167,10 +160,6 @@ const getBreedById = async (id, origin) => {
 				} else if (!weightMin && weightMax) {
 					weightMin = weightMax;
 					averageWeight = weightMax;
-				} else if (inst.name === 'Smooth Fox Terrier') {
-					weightMin = 6;
-					weightMax = 9;
-					averageWeight = (weightMax + weightMin) / 2;
 				} else {
 					weightMin = 20;
 					weightMax = 30;
@@ -212,7 +201,7 @@ const createNewDog= async ( weightMin, weightMax, height, name, life_span, image
 			image: image,
 			weightMin: weightMin,
 			weightMax: weightMax,
-            averageWeight: (weightMax + weightMin) /2,
+            averageWeight: (weightMax + weightMin) / 2,
         })
         let temper= await Temperament.findAll({
             where: {
