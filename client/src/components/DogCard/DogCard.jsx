@@ -4,8 +4,7 @@ import style from '../DogCard/dogCard.module.css'
 
 const DogCard = ({ id, image, name, temperament, weightMin, weightMax, averageWeight }) => {
     return (
-        
-        
+             
         <div className={style.dogCard}>
             
             <div className={style.imgDiv}>

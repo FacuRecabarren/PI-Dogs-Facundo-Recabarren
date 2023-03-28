@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDogDetail } from '../../redux/actions';
+import { getDogDetail, resetDetail } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -13,6 +13,9 @@ const Detail = () => {
 
   useEffect(() => {
     dispatch(getDogDetail(id))
+    return ()=> {
+      dispatch(resetDetail()) // We prevent the last detail viewed from being saved
+    }
   }, [])
 
   return (

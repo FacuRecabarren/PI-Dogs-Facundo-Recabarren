@@ -8,8 +8,10 @@ import { useDispatch } from 'react-redux';
 import style from "./home.module.css"
 
 const Home = () => {
+  
   const [dog, setDog]= useState("");
   const dispatch= useDispatch();  
+
   const handleClick= (event)=> {
   event.preventDefault();
   dispatch(getAllBreeds());

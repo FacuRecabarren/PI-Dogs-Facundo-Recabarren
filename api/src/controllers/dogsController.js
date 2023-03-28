@@ -1,20 +1,17 @@
-//In this file, I created all the controllers I will use on my dog handlers.
-//It is a file which will control the logics on my dogs route.
-
 require('dotenv').config();
 const axios = require ("axios");
 const {Dog}= require ("../db");
 const {Temperament}= require ("../db");
 const {API_KEY} = process.env
 
-//This function will bring all the info (.data) from the Api which I need to have. Same info criteria I used to create dogs
+// This function brings us all the information of the dog API. This information has the same structure as the body to create a new dog.
 
 const getBreedsFromApi= async()=> {
     let apiData= await axios(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
     
-        let fromApi= await apiData.data.map((inst)=>{
-            let weightMin = parseInt(inst.weight.metric.slice(0, 2).trim()); 
-            let weightMax = parseInt(inst.weight.metric.slice(4).trim());
+        let fromApi= await apiData.data.map((dog)=>{
+            let weightMin = parseInt(dog.weight.metric.slice(0, 2).trim()); 
+            let weightMax = parseInt(dog.weight.metric.slice(4).trim());
             let averageWeight = weightMax + weightMin;
         
             if (weightMin && weightMax) {
@@ -36,21 +33,21 @@ const getBreedsFromApi= async()=> {
             
 
         return {
-        id: inst.id,
+        id: dog.id,
         weightMin: weightMin,
         weightMax: weightMax,
         averageWeight: averageWeight,
-        height: inst.height,
-        name: inst.name,
-        life_span: inst.life_span,
-        image: inst.image.url,
-        temperament: inst.temperament
+        height: dog.height,
+        name: dog.name,
+        life_span: dog.life_span,
+        image: dog.image.url,
+        temperament: dog.temperament
         }
     });
     return fromApi;
 }
 
-//This function will bring all all de data from the Db;
+// This function will fetch all the data from the db.
 
 const getBreedsFromDb= async()=> {
     let dbData= await Dog.findAll({
@@ -61,17 +58,17 @@ const getBreedsFromDb= async()=> {
        }],
     });
 
-    let fromDb= dbData.map((inst)=>{
+    let fromDb= dbData.map((dog)=>{
         return {
-        id: inst.id,
-        weightMax: inst.weightMax,
-        weightMin: inst.weightMin,
-        averageWeight: (Number(inst.weightMax) + Number(inst.weightMin))/2,
-        height: inst.height,
-        name: inst.name,
-        life_span: inst.life_span,
-        image: inst.image,
-        temperament: inst.temperaments? inst.temperaments.map (el=> el.name).join(", "):"Happy",
+        id: dog.id,
+        weightMax: dog.weightMax,
+        weightMin: dog.weightMin,
+        averageWeight: (Number(dog.weightMax) + Number(dog.weightMin))/2,
+        height: dog.height,
+        name: dog.name,
+        life_span: dog.life_span,
+        image: dog.image,
+        temperament: dog.temperaments? dog.temperaments.map (el=> el.name).join(", "):"Happy",
         from_DB: true,
         }
     });
@@ -80,7 +77,7 @@ const getBreedsFromDb= async()=> {
     
 };
 
-//Unify in one function what comes from the api and what comes from db
+// We concatenate the api info with the database info
 
 const getBreeds= async() => {
     let breedsApi= await getBreedsFromApi();
@@ -89,7 +86,7 @@ const getBreeds= async() => {
     return breeds;
 }
 
-//This function will bring only the info related with the requested name. If the name does not exist, it will throw an error
+// This function will display the information that matches the requested name. If the name does not match, we respond with an error.
 
 const getBreedsByName= async (name)=>{
     
@@ -105,7 +102,7 @@ const getBreedsByName= async (name)=>{
     }
 };
 
-//This function will bring only the info belonging to the requested id. If the id does not exist, it will throw an error
+// This function will display the information that matches the requested id. If the name does not match, we respond with an error.
 
 const getBreedById = async (id, origin) => {
 	try {
@@ -143,11 +140,11 @@ const getBreedById = async (id, origin) => {
 				`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`,
 			);
 
-            let perrito = result.data.find(el=> el.id === Number(id) );
+            let dogg = result.data.find(el=> el.id === Number(id) );
 
-				let weightMin = parseInt(perrito.weight.metric.slice(0, 2).trim());
+				let weightMin = parseInt(dogg.weight.metric.slice(0, 2).trim());
 
-				let weightMax = parseInt(perrito.weight.metric.slice(4).trim());
+				let weightMax = parseInt(dogg.weight.metric.slice(4).trim());
 
 				let averageWeight = weightMax + weightMin;
 
@@ -166,12 +163,12 @@ const getBreedById = async (id, origin) => {
 				}
 
 				let dogDetail = {
-					id: perrito.id,
-					name: perrito.name,
-					height: perrito.height.metric,
-					life_span: perrito.life_span,
-					image: perrito.image ? perrito.image.url : " ",
-					temperament: perrito.temperament,
+					id: dogg.id,
+					name: dogg.name,
+					height: dogg.height.metric,
+					life_span: dogg.life_span,
+					image: dogg.image ? dogg.image.url : " ",
+					temperament: dogg.temperament,
 					weightMin: weightMin,
 					weightMax: weightMax,
 					averageWeight: averageWeight,
@@ -186,14 +183,14 @@ const getBreedById = async (id, origin) => {
 };
 
 
-//This function will create a new dog in my Db with all the requested info.
+// Create a new dog in my Db 
 
-const createNewDog= async ( weightMin, weightMax, height, name, life_span, image, temperament, from_DB)=> {
+const createNewDog = async ( weightMin, weightMax, height, name, life_span, image, temperament, from_DB) =>{
     if (!weightMin || !weightMax || !height || !name || !life_span || !image || !temperament){
     throw new Error("Missing information. Please, complete all the required data.")
     }
     else{
-        let newDog= await Dog.create({
+        let newDog = await Dog.create({
             name: name,
 			height: height,
 			life_span: life_span,
@@ -202,7 +199,7 @@ const createNewDog= async ( weightMin, weightMax, height, name, life_span, image
 			weightMax: weightMax,
             averageWeight: (weightMax + weightMin) / 2,
         })
-        let temper= await Temperament.findAll({
+        let temper = await Temperament.findAll({
             where: {
                 name: temperament
             }
@@ -212,7 +209,7 @@ const createNewDog= async ( weightMin, weightMax, height, name, life_span, image
     // return newDog
 };
 
-module.exports= {
+module.exports = {
     getBreeds,
     getBreedsByName,
     getBreedById,

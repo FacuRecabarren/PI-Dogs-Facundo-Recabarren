@@ -8,9 +8,9 @@ import style from "../DogCreate/dogCreate.module.css"
 const DogCreate = () => {
 
   const dispatch = useDispatch();
-  const temperaments = useSelector((state)=> state.temperaments) //global state
+  const temperaments = useSelector((state)=> state.temperaments) 
 
-  const [inputs, setInputs]= useState({ //local state
+  const [inputs, setInputs]= useState({ 
       name: "",
 			height: "",
 			life_span: "",
@@ -34,9 +34,9 @@ const DogCreate = () => {
   }
 
   const handleTemperamentChoices = (event)=> {
-    let { value }= event.target;
+    let { value } = event.target;
     if (inputs.temperaments.includes(value)) {
-      return alert ("Temperaments can not be repeated")
+      return alert ("Temperaments cannot be repeated")
     }
     setInputs({
       ...inputs,
@@ -47,7 +47,7 @@ const DogCreate = () => {
   const handleDelete= (temp)=> {
     setInputs({
       ...inputs,
-      temperaments: inputs.temperaments.filter( inst => inst !== temp)
+      temperaments: inputs.temperaments.filter( elem => elem !== temp)
     })
   }
 
@@ -55,7 +55,7 @@ const DogCreate = () => {
     event.preventDefault();
     dispatch(createNewDog(inputs))
     console.log(inputs)
-    alert ("Dog successfully added")
+    alert ("The dog was created correctly!")
     setInputs({
       name: "",
 			height: "",
@@ -64,7 +64,7 @@ const DogCreate = () => {
 			weightMin: "0",
 			weightMax: "0",
       temperaments: [],
-    })
+    }) // Reload the data after submitting
   }
   
   useEffect(()=> {
@@ -87,13 +87,14 @@ const DogCreate = () => {
       <div>
         <form action="">
 
-          <div className={style.bothSides}>
+          <div className={style.sectionsDiv}>
 
-            <div className={style.leftSide}>
+            <section className={style.leftSection}>
 
-              <div className={style.name}>
-                <label>Name</label>
+              <div className={style.allTitles}>
+                <label className={style.labels}>Name</label>
                 <input 
+                className={style.allInputs}
                 type="text" 
                 name="name"
                 value={inputs.name}
@@ -102,48 +103,50 @@ const DogCreate = () => {
                 {error.name && <strong>{error.name}</strong>}
               </div>
 
-              <div className={style.image}>
-                <label>Image</label>
+              <div className={style.allTitles}>
+                <label className={style.labels}>Image</label>
                 <input 
+                className={style.allInputs}
                 type="text" 
                 name="image"
                 value={inputs.image}
-                placeholder= {"Add an image"}
+                placeholder= {"Add url"}
                 onChange={(event)=>handleInputs(event)}/>
                 {error.image && <strong>{error.image}</strong>}
               </div>
 
-              <div className={style.life}>
-                <label>Life expectancy</label>
+              <div className={style.allTitles}>
+                <label className={style.labels}>Life expectancy</label>
                   <input 
+                  className={style.allInputs}
                   type="text" 
                   name="life_span"
                   value={inputs.life_span}
-                  placeholder={"For example: 10 - 15 years"}
+                  placeholder={"For example: 12 - 15 years"}
                   onChange={(event)=>handleInputs(event)}/>
                   {error.life_span && <strong>{error.life_span}</strong>}
                 
               </div>
 
-            </div>
+            </section>
 
-            <div className={style.rightSide}>
+            <section className={style.rightSection}>
 
-              <div className={style.min}>
-                <label>Min</label> 
+              <div className={style.allTitles}>
+                <label className={style.labels}>Min Weight (kg)</label> 
                 <input 
+                className={style.allInputs}
                 type="text" 
                 name="weightMin"
                 value={inputs.weightMin}
-                // min= "1"
-                // max= "100"
                 onChange={(event)=>handleInputs(event)}/>
                 {error.weightMin && <strong>{error.weightMin}</strong>}
               </div>
 
-              <div className={style.max}>
-                <label>Max</label>
+              <div className={style.allTitles}>
+                <label className={style.labels}>Max Weight (kg)</label>
                 <input 
+                className={style.allInputs}
                 type="text" 
                 name="weightMax"
                 value={inputs.weightMax}
@@ -152,25 +155,25 @@ const DogCreate = () => {
                 {error.weightMax && <strong>{error.weightMax}</strong>}
               </div>
 
-              <div className={style.height}>
-                <label>Height</label>
-                  <input 
+              <div className={style.allTitles}>
+                <label className={style.labels}>Height (cm)</label>
+                  <input
+                  className={style.allInputs} 
                   type="text" 
                   name="height"
                   value={inputs.height}
-                  placeholder= {"For example: 55 - 67"}
+                  placeholder= {"For example: 67 - 80"}
                   onChange={(event)=>handleInputs(event)}/>
                   {error.height && <strong>{error.height}</strong>}
-                  
-                
+                          
               </div>
 
-            </div>
+            </section>
 
           </div>
 
           <div className={style.temperamentSelect}>
-              <label>Temperaments</label>
+              <label className={style.labels}>Temperaments</label>
                 <select value={temperaments} onChange={(event)=>handleTemperamentChoices(event)}>
                   <option value="all"></option>
                   {temperaments.map((temp)=> {

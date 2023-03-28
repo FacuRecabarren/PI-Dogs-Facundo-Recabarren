@@ -1,16 +1,16 @@
-import { FILTER_BY_ORIGIN, GET_ALL_BREEDS, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_BY_TEMPER, GET_ALL_TEMPS, GET_DOGS_BY_NAME, GET_DOG_DETAIL, CREATE_DOG} from "../redux/action-types";
+import { SET_CURRENT_PAGE, RESET_DETAIL, FILTER_BY_ORIGIN, GET_ALL_BREEDS, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_BY_TEMPER, GET_ALL_TEMPS, GET_DOGS_BY_NAME, GET_DOG_DETAIL, CREATE_DOG} from "../redux/action-types";
 
-//here I create my reducer which will handle my global state
 
 const initialState = {
-    dogs: [], //this would be like a current
+    dogs: [], 
     dogDetail: {},
     temperaments: [],
-    allDogs: [], //this is a copy of all dogs which endures
+    allDogs: [], 
+    currentPage: 1,
 }
 
 const reducer = (state = initialState, action) => {
-    let aux = []; //auxiliary
+    let aux = []; 
 
     switch(action.type) {
         case GET_ALL_BREEDS:
@@ -50,25 +50,25 @@ const reducer = (state = initialState, action) => {
             }
 
         case ORDER_BY_WEIGHT: 
-            if (action.payload === "min") {
+            if (action.payload === "minWeight") {
                 aux = state.dogs.sort((dogA, dogB) => {
                     if(dogA.weightMin < dogB.weightMin) return -1;
                     if(dogA.weightMin > dogB.weightMin) return 1;
                     return 0;
                 })
-            } else if (action.payload === "max") {
+            } else if (action.payload === "maxWeight") {
                 aux = state.dogs.sort((dogA, dogB) => {
                     if(dogA.weightMax > dogB.weightMax) return -1;
                     if(dogA.weightMax < dogB.weightMax) return 1;
                     return 0;
                 })
-            } else if (action.payload === "ave"){
+            } else if (action.payload === "average"){
                 aux = state.dogs.sort((dogA, dogB) => {
                     if(dogA.averageWeight < dogB.averageWeight) return -1;
                     if(dogA.averageWeight > dogB.averageWeight) return 1;
                     return 0;
                 })
-            } else if (action.payload === "ave-max"){
+            } else if (action.payload === "average-max"){
                 aux = state.dogs.sort((dogA, dogB) => {
                     if(dogA.averageWeight > dogB.averageWeight) return -1;
                     if(dogA.averageWeight < dogB.averageWeight) return 1;
@@ -82,12 +82,9 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 dogs: aux
             }
-        
-    
 
         case FILTER_BY_ORIGIN:
-            // const allDogs = state.allDogs;
-            const filteredOrigin= action.payload === "from_DB" ? state.allDogs.filter( inst => inst.from_DB) : state.allDogs.filter(inst=> !inst.from_DB);
+            const filteredOrigin = action.payload === "from_DB" ? state.allDogs.filter( dog => dog.from_DB) : state.allDogs.filter(dog => !dog.from_DB);
             return {
                 ...state,
                 dogs: action.payload === "All" ? state.allDogs : filteredOrigin
@@ -97,7 +94,7 @@ const reducer = (state = initialState, action) => {
             let dogsWithChosenTemps =
                 action.payload === "all"
                 ? state.allDogs
-                : state.allDogs?.filter((dog) => {
+                : state.allDogs?.filter((dog) =>{
                 if (!dog.temperament) return undefined;
                 else return dog.temperament.split(", ").includes(action.payload);
                 });
@@ -122,7 +119,17 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
             }
-            
+        
+        case RESET_DETAIL: 
+            return {
+                ...state,
+                dogDetail: {}
+            }
+        case SET_CURRENT_PAGE: 
+            return {
+                ...state,
+                currentPage: action.payload
+            }
         default:
             return {
                 ...state,

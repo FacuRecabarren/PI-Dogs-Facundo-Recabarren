@@ -1,39 +1,40 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from 'react';
-import {filterByOrigin, getAllBreeds, orderByName, orderByWeight, filterByTemper, getAllTemperaments} from "../../../redux/actions"
+import {setCurrentPage, filterByOrigin, getAllBreeds, orderByName, orderByWeight, filterByTemper, getAllTemperaments} from "../../../redux/actions"
 import Dog from "../../DogCard/DogCard"
 import Pagination from '../../Paginated/Paginated';
 import style from "../FilterDogs/filterDogs.module.css";
 
 
-//This function has the complete logic of /home path
+// Filter dogs functions 
 
 const FilterDogs = () => {
 
-  //I create all the consts I need to use in this function
+  // Consts
 
   const dispatch= useDispatch();
   const dogs= useSelector(state => state.dogs);
   const [order, setOrder]= useState('')
   const [temperament, setTemperament]= useState('all')
 
-  const [currentPage, setCurrentPage]= useState(1) //I start always on page 1
-  const [dogsPerPage, setDogsPerPage] = useState(8) //this number 8 is the amount of dogs I want to show per page
+  const currentPage = useSelector(state => state.currentPage);
+  const [dogsPerPage, setDogsPerPage] = useState(8) // Eight dogs per page
   const numOfLastDog= currentPage * dogsPerPage;
   const numOfFirstDog= numOfLastDog - dogsPerPage;
   const currentDogs = dogs.slice(numOfFirstDog, numOfLastDog)
 
-  //I create all the functions
+  // Functions
   
-  const pagination= (page) => {setCurrentPage(page)}
+  const pagination= (page) => {
+    dispatch(setCurrentPage(page))
+  }
 
   const temperaments = useSelector((state) => state.temperaments).sort(
     function (a, b) {
         if (a < b) return -1;
         else return 1;
     })
-
 
   const handleOrder1= (event) => {
     dispatch(orderByName(event.target.value));
@@ -46,7 +47,6 @@ const FilterDogs = () => {
     setCurrentPage(1);
     setOrder(`Ordered ${event.target.value}`);
   }
-
 
   const handleFilterByOrigin= (event) => {
     dispatch(filterByOrigin(event.target.value));
@@ -61,22 +61,12 @@ const FilterDogs = () => {
     setOrder(`Ordered ${event.target.value}`);
   }
 
-
-
-  // I have to fill my dogs state with the info form my Back. I use the action I created to do this
-
   useEffect(()=> {
     dispatch(getAllBreeds())
     dispatch(getAllTemperaments())
   }, [dispatch]);
 
-
-  //All the logic done, I return what I want to be rendered
-  //Orders: by name (OK), by weight (DONE, BUT NOT WORKING!)
-  //Filter by DB (DONE, BUT NOT WORKING!)
-  //Filter by temperament-PENDING
-  //Pagination numbers-OK
-  //Dogs card as individual units-OK
+  // Render
 
   return (
     
@@ -111,15 +101,15 @@ const FilterDogs = () => {
         <div className={style.filterTitle}>Weight Ordering</div>
         <select className={style.filterSelect} defaultValue="weight" onChange={event =>{handleOrder2(event)}}>
           <option value="weight" disabled selected>Select</option>
-          <option value="min">From lighter to heavier</option>
-          <option value="max">From heavier to lighter</option>
+          <option value="minWeight">From lighter to heavier</option>
+          <option value="maxWeight">From heavier to lighter</option>
         </select>
 
         <div className={style.filterTitle}>Average weight</div>
         <select className={style.filterSelect} defaultValue="aver" onChange={event =>{handleOrder2(event)}}>
           <option value="aver" disabled selected>Select</option>
-          <option value="ave">Order from lighter to heavier</option>
-          <option value="ave-max">Order from heavier to lighter</option>
+          <option value="average">Order from lighter to heavier</option>
+          <option value="average-max">Order from heavier to lighter</option>
         </select>
       </div> 
       
