@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500&display=swap');
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Be Vietnam Pro', sans-serif;;
+    background-image: url(https://triplecacres.co/wp-content/uploads/2020/06/85586276_l-scaled.jpg);
+    background-size: cover;
+    background-attachment: fixed;  
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.divTitle{
+    width: 40%;
+}
+
+.title{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 2.5em;
+    letter-spacing: -.015em;
+    color: #ffd000;
+    padding-top: .5em;
+    text-shadow: 3px 1px 2px rgba(0,0,0,0.6);
+}
+
+.btnTitle{
+    margin-top: 5px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    text-align: center;
+    cursor: pointer;
+    padding: 17px 30px;
+    color: #ffffff;
+    font-size: 20px;
+    border: 0;
+    background-color: #0000009d;
+    font-weight: 300;
+    line-height: 30px;
+    transition: .3s ease-in-out;
+    width: 10em;
+}
+
+.btnTitle:hover{
+    background-color: #fbd115d0;
+    color: #000000;
+    font-weight: 300;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    background: #000000c7;
+    width: 60%;
+    height: 100%;
+    box-shadow: -1px 15px 30px -12px black;
+    
+}
+
+.bothSides {
+    display: flex;
+    justify-content: center;
+    height: 300px;
+}
+
+.leftSide {
+    width: 45%;
+    padding-left: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    
+}
+
+.rightSide {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+}
+.name label {
+    margin-bottom: .5rem;
+    color: #ffd000;
+}
+.name input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: #c8cac7;
+    width: 100%;
+    outline: none;
+}
+
+.image {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+}
+.image label {
+    margin-bottom: .5rem;
+    color: #ffd000;
+}
+.image input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: #c8cac7;
+    width: 100%;
+    outline: none;
+}
+
+.life {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+}
+.life label {
+    margin-bottom: .5rem;
+    color: #ffd000;
+}
+.life input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: #c8cac7;
+    width: 100%;
+    outline: none;
+}
+
+.min {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+}
+.min label {
+    margin-bottom: .5rem;
+    color: #ffd000;
+}
+.min input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: #c8cac7;
+    width: 99%;
+    outline: none;
+}
+
+.max {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+}
+.max label {
+    margin-bottom: .5rem;
+    color: #ffd000;
+}
+.max input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: #c8cac7;
+    width: 99%;
+    outline: none;
+}
+
+.height {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+}
+.height label {
+    margin-bottom: .5rem;
+    color: #ffd000;
+}
+.height input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: #c8cac7;
+    width: 99%;
+    outline: none;
+}
+
+.temperamentSelect {
+    display: flex;
+    flex-direction: column;
+    margin: 0 5% 0 5%;
+    width: 90%;
+}
+.temperamentSelect label {
+    margin-bottom: .5rem;
+    color: #ffd000;
+}
+.temperamentSelect select {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    width: 100%;
+    outline: none;
+    color: #fff;
+}
+
+strong {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: .75em;
+    color: #bb0000;
+}
+
+.divTempForm{
+    position: relative;
+}
+
+.myTemps{
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+    color: #ffffff;
+}
+
+.tempLi{
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: .9em;
+    color: #757575;
+    list-style: none;
+}
+
+.divTemps{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 27em;
+    margin-left: 10em;
+    flex-wrap: wrap;
+    margin-bottom: 2em;
+    margin-top: 2em;
+    gap: 10px;
+}
+
+.divAddTemps{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.textTemps{
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: .8em;
+    color: #ffffff;
+}
+
+.btnDelete{
+    display: flex;
+    justify-content: center;
+    font-family: 'IBM Plex Sans', sans-serif;
+    text-align: center;
+    cursor: pointer;
+    padding: 5px 10px;
+    color: #c5c5c5;
+    font-size: .7em;
+    border: 0;
+    background-color: #aa0000;
+    border-radius: 5px;
+    font-weight: 300;
+    line-height: 10px;
+    transition: .3s ease-in-out;
+    width: 1em;
+}
+
+.btnDelete:hover{
+    background-color: #00000085;
+    color: #ffffff;
+    font-weight: 300;
+}
+
+.btnCreateDog{
+    font-family: 'IBM Plex Sans', sans-serif;
+    text-align: center;
+    cursor: pointer;
+    padding: 17px 30px;
+    color: #000000;
+    font-size: 20px;
+    border: 0;
+    background-color: #e6bb00;
+    font-weight: 300;
+    line-height: 10px;
+    transition: .3s ease-in-out;
+    width: 8em;
+    margin-top: 6em;
+}
+
+.btnCreateDog:hover{
+    background-color: #00000085;
+    color: #ffffff;
+    font-weight: 300;
+}

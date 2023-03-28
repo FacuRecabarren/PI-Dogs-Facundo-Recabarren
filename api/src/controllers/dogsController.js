@@ -22,7 +22,7 @@ const getBreedsFromApi= async()=> {
 
             } else if (weightMin && !weightMax) {
                 weightMax = weightMin;
-                averageWeight= averageWeight / 2;
+                averageWeight = averageWeight / 2;
 
             } else if (!weightMin && weightMax) {
                 weightMin = weightMax;
@@ -34,7 +34,6 @@ const getBreedsFromApi= async()=> {
                 averageWeight= ((weightMax) + (weightMin)) / 2;
             }
             
-            // console.log(inst.weight.metric.length<=3&&inst.id)
 
         return {
         id: inst.id,
@@ -67,7 +66,7 @@ const getBreedsFromDb= async()=> {
         id: inst.id,
         weightMax: inst.weightMax,
         weightMin: inst.weightMin,
-        averageWeight: (inst.weightMax + inst.weightMin) / 2,
+        averageWeight: (Number(inst.weightMax) + Number(inst.weightMin))/2,
         height: inst.height,
         name: inst.name,
         life_span: inst.life_span,
@@ -127,7 +126,7 @@ const getBreedById = async (id, origin) => {
 					id: dogDB.id,
 					weightMax: dogDB.weightMax,
 					weightMin: dogDB.weightMin,
-                    averageWeight: (dogDB.weightMax + dogDB.weightMin) /2,
+                    averageWeight: (Number(dogDB.weightMax) + Number(dogDB.weightMin)) /2,
 					height: dogDB.height,
 					name: dogDB.name,
 					life_span: dogDB.life_span,

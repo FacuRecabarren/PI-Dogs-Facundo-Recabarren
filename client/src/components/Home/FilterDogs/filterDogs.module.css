@@ -5,7 +5,8 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    
+    margin: 0;
+    padding: 0;
 }
 
 .container{
@@ -19,6 +20,7 @@
 .filters{
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1em;
     align-items: center;
     margin-top: 2em;
@@ -45,13 +47,13 @@
     text-align: center;
     cursor: pointer;
     color: #000000;
-    font-size: 1em;
+    font-size: .9em;
     border: 0;
     border-bottom: 1px solid #000000;
     background-color: transparent;
     font-weight: 300;
     transition: .3s ease-in-out;
-    width: 6em;
+    width: 5em;
     outline: none;
 }
 

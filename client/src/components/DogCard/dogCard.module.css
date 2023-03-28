@@ -19,11 +19,17 @@
     cursor: pointer;
   }
 
+.imgDiv{
+    height: 17.3em;
+    background-color: #ffd000;
+    border-radius: 2% 2% 10% 10%;
+}
+
 .imgCard{
     width: 23em;
     height: 17em;
     object-fit: cover;
-    border-radius: 2% 2% 0% 0%;
+    border-radius: 2% 2% 10% 10%;
     box-shadow: 0 0 1rem hsla(0, 0%, 0%, 0.541);
 }
 

@@ -5,7 +5,7 @@ const Paginated = ({dogsPerPage, dogs, pagination}) => {
 
     const pages = [];
 
-    for (let i=0; i <= Math.floor(dogs/dogsPerPage); i++){
+    for (let i=0; i <= Math.floor(dogs/dogsPerPage) - 1; i++){
         pages.push(i+1)
     }
 
@@ -16,9 +16,9 @@ const Paginated = ({dogsPerPage, dogs, pagination}) => {
             pages && pages.map(num => (
                 <li className={style.pageNumber} key={num}>
 
-                    <button className={style.divLink}>
-                        <a className={style.link} onClick={() => pagination(num)}>{num}</a>
-                    </button>
+                    
+                        <a className={style.link} onClick={() => pagination(num)}>{num}</a>    
+                    
 
                 </li>
             ))}
