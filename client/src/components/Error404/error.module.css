@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500&display=swap');
+
+.bodyError{
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    justify-content: center;
+    background-image: url(https://fotografias.antena3.com/clipping/cmsimages02/2022/01/30/BB8D9562-7194-4FDA-9989-385A1EFDCC75/cachorro-blanco_98.jpg?crop=1920,1080,x0,y102&width=1900&height=1069&optimize=low&format=webply);
+    background-size: cover;
+    background-attachment: fixed;  
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.divTitles{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 6em;
+}
+
+h2{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 3em;
+    color: #e6bb00;
+    text-shadow: 2px 1px 2px rgba(0,0,0,0.6);
+    height: 10px;
+}
+
+h3{
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1.3em;
+    color: #000000e1;
+}
+
+h1{
+    border-top: 1px solid #000000;
+    padding-top: 1.2em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 2em;
+    color: #000000;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+.btnError{
+    margin-top: 10px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    text-align: center;
+    cursor: pointer;
+    padding: 17px 30px;
+    color: #000000;
+    font-size: 20px;
+    border: 0;
+    background-color: #e6bb00;
+    font-weight: 300;
+    line-height: 30px;
+    transition: .3s ease-in-out;
+    width: 10em;
+}
+
+.btnError:hover{
+    background-color: #000000;
+    color: #ffffff;
+    font-weight: 300;
+}
