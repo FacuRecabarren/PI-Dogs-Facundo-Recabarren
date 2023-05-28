@@ -10,7 +10,7 @@
     background-attachment: fixed;  
     background-repeat: no-repeat;
     background-position: center;
-    width: 100vw;
+    width: 100%;
     margin: 0;
     padding: 0;
 }
@@ -22,7 +22,7 @@
     margin-top: 2em;
     background-color: rgba(0, 0, 0, 0.726);
     height: 6em;
-    width: 70em;
+    width: 100%;
 }
 
 .btnCreate{
